@@ -1,0 +1,19 @@
+name: Python Pipeline
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubunto-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: python hello.py
+  build:
+    needs: [test
+    runs-on: ubunto-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/updload-artifact@v2
+        with: 
+          name: hello
+          path: .
