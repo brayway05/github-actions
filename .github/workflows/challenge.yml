@@ -3,39 +3,22 @@ name: complex
 on: push
 
 jobs:
-    job1:
-        name: Job 1
+    ubuntu:
         runs-on: ubuntu-latest
         steps:
-            - name: Step one
-              uses: actions/checkout@v2
-            - name: Step two
-              run: date
-
-    job2:
-        name: Job 2
+            - run: date
+    windows:
         runs-on: windows-latest
         steps:
-            - name: Step one
-              uses: actions/checkout@v2
-            - name: Step two
-              run: Get-Date
+            - run: Get-Date
 
-    job3:
-        name: Job 3
+    macos:
         runs-on: macos-latest
         steps:
-            - name: Step one
-              uses: actions/checkout@v2
-            - name: Step two
-              run: date
+            - run: date
 
-    job4:
-        name: Job 4
+    depends:
         runs-on: ubuntu-latest
-        needs: [job1, job2, job3]
+        needs: [ubuntu, windows, macos]
         steps:
-            - name: Step one
-              uses: actions/checkout@v2
-            - name: Step two
-              run: date
+            - run: date
